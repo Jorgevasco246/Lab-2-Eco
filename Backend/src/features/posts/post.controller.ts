@@ -26,10 +26,10 @@ export class PostController {
 
   // DELETE /posts/:id
   deletePost = (req: Request, res: Response) => {
-    const { id } = req.params;
+  const { id } = req.params;
 
-    this.posts = this.posts.filter(post => post.id !== id);
+  this.posts = this.posts.filter(post => post.id !== id);
 
-    res.json({ message: "Post eliminado" });
+  res.json({ message: "Post eliminado" });
   };
 }
