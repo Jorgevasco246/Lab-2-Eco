@@ -6,7 +6,7 @@ function Posts() {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch("http://localhost:1234/api/posts");
+      const response = await fetch("https://lab-2-eco-backend.vercel.app/api/posts");
       const data = await response.json();
       setPosts(data);
     } catch (error) {
@@ -16,7 +16,7 @@ function Posts() {
 
   const deletePost = async (id: string) => {
     try {
-      await fetch(`http://localhost:1234/api/posts/${id}`, {
+      await fetch(`https://lab-2-eco-backend.vercel.app/api/posts/${id}`, {
         method: "DELETE",
       });
       fetchPosts();

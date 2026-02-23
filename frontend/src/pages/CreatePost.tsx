@@ -11,7 +11,7 @@ function CreatePost() {
     const newPost = { title, description, imageUrl };
 
     try {
-      const response = await fetch("http://localhost:1234/api/posts", {
+      const response = await fetch("https://lab-2-eco-backend.vercel.app/api/posts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newPost),
