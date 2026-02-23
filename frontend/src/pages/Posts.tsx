@@ -41,22 +41,22 @@ function Posts() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6 md:p-12 font-sans">
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-screen bg-gray-50 p-6 ">
+      <div className="max-w-5xl">
         
 
-        <h2 className="text-4xl font-bold mb-8 text-gray-800 text-center tracking-tight">
+        <h2 className="text-4xl font-bold mb-8 text-gray-800 text-center ">
           El mejor Feed del mundo
         </h2>
 
-        {/* Grid de Posts */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Posts */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {posts.map((post) => (
             <div
               key={post.id}
-              className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden"
+              className="bg-white rounded-2xl border border-gray-100"
             >
-              {/* Imagen (Edge to Edge) */}
+              {/* Imagen denrto*/}
               {post.imageUrl ? (
                 <div className="h-48 w-full overflow-hidden bg-gray-100">
                   <img
@@ -66,12 +66,12 @@ function Posts() {
                   />
                 </div>
               ) : (
-                <div className="h-48 w-full bg-linear-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                <div className="h-48 w-full bg-linear-to-br bg-amber-50 flex items-center justify-center">
                   <span className="text-gray-400 text-sm">Sin imagen</span>
                 </div>
               )}
 
-              {/* Contenido del Post */}
+              {/* Contenido */}
               <div className="p-6 flex flex-col grow">
                 <h3 className="text-xl font-bold text-gray-800 mb-2 line-clamp-1">
                   {post.title}
@@ -80,7 +80,7 @@ function Posts() {
                   {post.description}
                 </p>
 
-                {/* Botón Borrar */}
+                {/* bBorrar */}
                 <button
                   onClick={() => deletePost(post.id)}
                   className="w-full mt-auto bg-red-50 text-red-600 font-medium px-4 py-2.5 rounded-xl hover:bg-red-500 hover:text-white "

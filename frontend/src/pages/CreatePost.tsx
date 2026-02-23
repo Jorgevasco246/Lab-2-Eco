@@ -20,7 +20,7 @@ function CreatePost() {
       const data = await response.json();
       console.log("Post creado:", data);
 
-      // Limpiar inputs
+      // Limpiar el formulario
       setTitle("");
       setDescription("");
       setImageUrl("");
@@ -42,7 +42,7 @@ function CreatePost() {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Título"
-            className="w-full border border-gray-200 bg-gray-50 p-3.5 rounded-xl outline-none focus:ring-2"
+            className="w-full border border-gray-200 bg-gray-50 p-3.5 rounded-xl"
             required
           />
         </div>
@@ -53,7 +53,7 @@ function CreatePost() {
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Descripción"
             rows={3}
-            className="w-full border border-gray-200 bg-gray-50 p-3.5 rounded-xl outline-none focus:ring-2"
+            className="w-full border border-gray-200 bg-gray-50 p-3.5 rounded-xl "
             required
           />
         </div>
@@ -63,7 +63,7 @@ function CreatePost() {
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)}
             placeholder="URL de la imagen"
-            className="w-full border border-gray-200 bg-gray-50 p-3.5 rounded-xl outline-none focus:ring-2 "
+            className="w-full border border-gray-200 bg-gray-50 p-3.5 rounded-xl "
           />
         </div>
 

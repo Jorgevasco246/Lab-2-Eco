@@ -1,17 +1,26 @@
 import { Request, Response } from "express";
 import { Post } from "./post.types";
+import  Boom  from "@hapi/boom";
 
 export class PostController {
   private posts: Post[] = [];
 
-  // GET /posts
+  //GEt
   getPosts = (req: Request, res: Response) => {
     res.json(this.posts);
   };
 
-  // POST /posts
+  // POST
   createPost = (req: Request, res: Response) => {
     const { imageUrl, title, description } = req.body;
+
+    if (title === undefined) {
+            throw Boom.badRequest("Title is required");
+        }
+        if (description === undefined) {
+            throw Boom.badRequest("Description is required");
+        }
+
 
     const newPost: Post = {
       id: Date.now().toString(),
@@ -21,15 +30,13 @@ export class PostController {
     };
 
     this.posts.push(newPost);
-    res.status(201).json(newPost);
+    res.json(newPost);
   };
 
-  // DELETE /posts/:id
+  // Ddelete
   deletePost = (req: Request, res: Response) => {
   const { id } = req.params;
-
   this.posts = this.posts.filter(post => post.id !== id);
-
-  res.json({ message: "Post eliminado" });
+  return res.send({ message: "Post eliminado" });
   };
 }
