@@ -8,61 +8,73 @@ function CreatePost() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const newPost = {
-      title,
-      description,
-      imageUrl,
-    };
+    const newPost = { title, description, imageUrl };
 
     try {
       const response = await fetch("http://localhost:1234/api/posts", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newPost),
       });
 
       const data = await response.json();
       console.log("Post creado:", data);
 
-      // limpiar inputs
+      // Limpiar inputs
       setTitle("");
       setDescription("");
       setImageUrl("");
 
-      // avisar a Posts que refresque
+      // Avisar a Posts que refresque
       window.dispatchEvent(new Event("postCreated"));
-
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Crear Post</h2>
+    <div className="bg-white/80 backdrop-blur-md p-8 rounded-2xl r border-gray-100 mb-10">
+      <h2 className="text-2xl font-bold text-gray-800 mb-6">Crear Post</h2>
+      
+      <form onSubmit={handleSubmit} className="space-y-5">
+        <div>
+          <input
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Título"
+            className="w-full border border-gray-200 bg-gray-50 p-3.5 rounded-xl outline-none focus:ring-2"
+            required
+          />
+        </div>
 
-      <input
-        placeholder="Título"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
+        <div>
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            placeholder="Descripción"
+            rows={3}
+            className="w-full border border-gray-200 bg-gray-50 p-3.5 rounded-xl outline-none focus:ring-2"
+            required
+          />
+        </div>
 
-      <input
-        placeholder="Descripción"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
+        <div>
+          <input
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+            placeholder="URL de la imagen"
+            className="w-full border border-gray-200 bg-gray-50 p-3.5 rounded-xl outline-none focus:ring-2 "
+          />
+        </div>
 
-      <input
-        placeholder="URL Imagen"
-        value={imageUrl}
-        onChange={(e) => setImageUrl(e.target.value)}
-      />
-
-      <button type="submit">Crear</button>
-    </form>
+        <button 
+          type="submit"
+          className="w-full bg-purple-500 text-white font-semibold px-4 py-3.5 rounded-xl hover:bg-purple-600 "
+        >
+          Publicar Post
+        </button>
+      </form>
+    </div>
   );
 }
 
